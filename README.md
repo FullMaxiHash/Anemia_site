@@ -1,237 +1,245 @@
-🩸 AnemiaAI — AI-Powered Anemia Detection System
-<p align="center"> <b>Full-Stack Medical Web Application built with FastAPI</b><br> AI-based anemia type prediction + Doctor verification system </p>
-🚀 About The Project
+# 🩸 AnemiaAI  
+### AI-Powered Anemia Detection & Doctor Verification System
 
-AnemiaAI is a role-based medical web platform that:
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/SQLAlchemy-red?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/SQLite-lightgrey?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" />
+</p>
 
-Analyzes blood test parameters
+---
 
-Predicts anemia type using AI logic
+## 🚀 Overview
 
-Calculates anemia risk percentage
+**AnemiaAI** is a full-stack medical web application built with **FastAPI** that:
 
-Allows doctors to confirm or correct AI diagnosis
+- 🧠 Detects anemia type from blood test values  
+- 📊 Calculates anemia risk percentage  
+- 👤 Allows patients to submit blood analyses  
+- 🩺 Allows doctors to confirm or correct AI diagnosis  
+- 📈 Displays statistical charts for doctors  
+- 💾 Stores full medical history  
 
-Stores full medical history in a database
+> ⚠️ Educational project. Not intended for real clinical use.
 
-Displays statistical charts for doctors
+---
 
-This project demonstrates full-stack development skills with backend logic, authentication, database modeling, and frontend visualization.
+# ✨ Features
 
-⚠️ This system is for educational purposes only and does not replace professional medical advice.
+## 👤 Patient Panel
 
-✨ Features
-👤 Patient
+- Registration & Login
+- Submit blood parameters
+- AI classification:
+  - Microcytic anemia
+  - Macrocytic anemia
+  - Normocytic anemia
+  - Normal
+- Risk percentage calculation
+- View history
+- View doctor confirmation or correction
 
-Registration & Login
+---
 
-Submit blood test parameters
+## 🩺 Doctor Panel
 
-Get AI-predicted anemia type
+- View all patient analyses
+- See AI preliminary diagnosis
+- Approve with recommendations
+- Reject with corrected diagnosis
+- Status tracking:
+  - `Pending`
+  - `Confirmed`
+  - `Rejected`
+- 📊 Blood statistics chart (Chart.js)
 
-View risk percentage
+---
 
-View history of analyses
+# 🧠 AI Logic
 
-See doctor confirmation or correction
+### Classification Rules
 
-🩺 Doctor
+| Condition | Result |
+|-----------|--------|
+| HB ≥ 120 | Normal |
+| HB < 120 & MCV < 80 | Microcytic anemia |
+| HB < 120 & MCV > 100 | Macrocytic anemia |
+| HB < 120 & 80 ≤ MCV ≤ 100 | Normocytic anemia |
 
-View all patient analyses
+### Risk Formula
 
-See AI preliminary diagnosis
+```python
+risk = ((120 - hb) / 120) * 100
+```
 
-Approve diagnosis (add recommendations)
 
-Reject diagnosis (add corrected diagnosis)
 
-View average blood parameter statistics (Chart.js)
+# 🏗 Project Structure
 
-Status tracking:
-
-Pending
-
-Confirmed
-
-Rejected
-
-🧠 AI Diagnosis Logic
-
-Anemia type is classified based on Hemoglobin (HB) and MCV:
-
-Condition	Diagnosis
-HB ≥ 120	Normal
-HB < 120 & MCV < 80	Microcytic anemia
-HB < 120 & MCV > 100	Macrocytic anemia
-HB < 120 & 80 ≤ MCV ≤ 100	Normocytic anemia
-
-Risk is calculated proportionally based on hemoglobin deficiency.
-
-🏗 Project Structure
 anemia_ai_project/
 │
 ├── app/
-│   ├── main.py
-│   ├── models.py
+│ ├── main.py
+│ ├── models.py
 │
 ├── templates/
-│   ├── base.html
-│   ├── home.html
-│   ├── dashboard.html
-│   ├── doctor_dashboard.html
-│   ├── login.html
-│   ├── register.html
-│   ├── about.html
-│   ├── types.html
-│   ├── contacts.html
+│ ├── base.html
+│ ├── home.html
+│ ├── dashboard.html
+│ ├── doctor_dashboard.html
+│ ├── login.html
+│ ├── register.html
+│ ├── about.html
+│ ├── types.html
+│ ├── contacts.html
 │
 ├── static/
-│   ├── style.css
-│   ├── app.js
+│ ├── style.css
+│ ├── app.js
 │
 ├── anemia.db
 ├── requirements.txt
 └── README.md
 
-🛠 Tech Stack
-Backend
 
-FastAPI
+---
 
-SQLAlchemy
+# ⚙️ Installation Guide
 
-SQLite
-
-Jinja2
-
-Frontend
-
-HTML5
-
-CSS3
-
-JavaScript
-
-Chart.js
-
-⚙️ Installation Guide
-1️⃣ Clone the repository
+## 1️⃣ Clone Repository
+```
 git clone https://github.com/your-username/anemia-ai.git
 cd anemia-ai
+```
 
-2️⃣ Create virtual environment (recommended)
+---
+
+## 2️⃣ Create Virtual Environment
+
+### Windows
+```
 python -m venv venv
-
-
-Activate:
-
-Windows
-
 venv\Scripts\activate
+```
 
-
-Mac/Linux
-
+### Mac / Linux
+```
+python3 -m venv venv
 source venv/bin/activate
+```
 
-3️⃣ Install dependencies
-pip install -r requirements.txt
+---
 
-
-If requirements.txt doesn't exist:
-
+## 3️⃣ Install Dependencies
+```
 pip install fastapi uvicorn sqlalchemy jinja2 python-multipart
+```
 
-4️⃣ Run the server
+Or using requirements file:
+```
+pip install -r requirements.txt
+```
+
+---
+
+## 4️⃣ Run Application
+```
 python -m uvicorn app.main:app --reload
+```
 
-5️⃣ Open in browser
+---
+
+## 5️⃣ Open in Browser
+```
 http://127.0.0.1:8000
+```
 
-🗄 Database Reset
+---
 
-If you changed models and get errors:
+# 🗄 Reset Database (If Model Changes)
 
-Delete database file:
-
+If you get database errors:
+```
 del anemia.db
+```
+Then restart the server.
 
+---
 
-Then restart server.
+# 🔐 User Roles
 
-🔐 Default Roles
+| Role | Access |
+|------|--------|
+| patient | Submit and view own analyses |
+| doctor | View all analyses and confirm/reject |
 
-You can create users during registration.
+---
 
-To create doctor manually (example):
+# 📊 Doctor Dashboard Analytics
 
-In database, role must be:
+The system automatically calculates average:
 
-doctor
+- Hemoglobin
+- RBC
+- MCV
+- MCH
+- Platelets
 
+Displayed using interactive **Chart.js** bar chart.
 
-For patients:
+---
 
-patient
+# 🎨 Frontend Design
 
-📊 Doctor Statistics
+- Modern turquoise medical theme
+- Vertical clean input forms
+- Styled action buttons
+- Responsive layout
+- Status highlighting
 
-Doctor dashboard includes:
+---
 
-Bar chart of average:
+# 🛠 Technology Stack
 
-HB
+## Backend
+- FastAPI
+- SQLAlchemy ORM
+- SQLite Database
+- Jinja2 Templates
 
-RBC
+## Frontend
+- HTML5
+- CSS3
+- JavaScript
+- Chart.js
 
-MCV
+---
 
-MCH
+# 🔮 Future Improvements
 
-PLT
+- Password hashing (bcrypt)
+- JWT authentication
+- PostgreSQL support
+- Docker containerization
+- Real Machine Learning model
+- Deployment to cloud (Render / Railway / AWS)
 
-All patient analyses
+---
 
-Diagnosis validation system
+# 📜 License
 
-📌 Future Improvements
+MIT License
 
-Real Machine Learning model
+---
 
-Password hashing (bcrypt)
+# 👨‍💻 Author
 
-JWT Authentication
+CS-2428 Arnuruly Yestay, Sansyzbay Kaisarbek
 
-PostgreSQL production database
+---
 
-Docker containerization
-
-API versioning
-
-Dark mode
-
-Admin analytics dashboard
-
-Deployment on Render / Railway
-
-🎓 Educational Purpose
-
-This project demonstrates:
-
-Full-stack web architecture
-
-Role-based authentication
-
-ORM database modeling
-
-Medical AI logic
-
-Frontend data visualization
-
-📜 License
-
-MIT License — free to use for educational and portfolio purposes.
-
-💡 Author
-
-Developed as an AI-powered medical research system.
+<p align="center">
+⭐ If you like this project, give it a star on GitHub!
+</p>
